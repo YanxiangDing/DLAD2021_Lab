@@ -25,11 +25,11 @@ class Network(object):
     def backward(self, input):
         ## by yourself .Finish your own NN framework
         dz4 = self.loss.backward()
-        dA4 = self.fc4.backward(dz4, self.fc3.output)
+        dA4 = self.fc4.backward(dz4, self.act3.output)
         dz3 = np.multiply(dA4, self.act3.backward())
-        dA3 = self.fc3.backward(dz3, self.fc2.output)
+        dA3 = self.fc3.backward(dz3, self.act2.output)
         dz2 = np.multiply(dA3, self.act2.backward())
-        dA2 = self.fc2.backward(dz2, self.fc1.output)
+        dA2 = self.fc2.backward(dz2, self.act1.output)
         dz1 = np.multiply(dA2, self.act1.backward())
         _ = self.fc1.backward(dz1, input)
 
